@@ -22,6 +22,8 @@ Route::post('/profile/complete', 'UserController@store');
 Route::get('/profile/{profile}/edit', 'UserController@edit');
 Route::post('/profile/{profile}/update', 'UserController@update');
 Route::post('/profile/search', 'UserController@search');
+Route::get('/chat/{user}', 'ChatController@index');
+Route::post('/chat/{user}', 'ChatController@store');
 });
 
 

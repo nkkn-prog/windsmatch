@@ -13,7 +13,10 @@ use App\Genre;
 use App\Prefecture;
 use App\Image;
 use App\InstrumentProfile;
+use App\Message;
+use App\ChatController;
 use Storage;
+use DB;
 
 class UserController extends Controller
 {   
@@ -44,7 +47,10 @@ class UserController extends Controller
     
     public function create(User $user, Profile $profile, Instrument $instrument, Genre $genre, Prefecture $prefecture,Image $image)
     {   
+        //ログインユーザーのIDを取得
         $user = Auth::user();
+        
+        //ログインユーザーのプロフィール情報を取得
         $profile = $user->profile;
         
         return view('profile/create')->with([
@@ -123,7 +129,7 @@ class UserController extends Controller
         return redirect('/profile/' . $profile->id . '/show');
     }
     
-    public function show(Profile $profile, Instrument $instrument, Genre $genre, Image $image)
+    public function show(User $user, Profile $profile, Instrument $instrument, Genre $genre, Image $image)
     {   
         $userId = Auth::id();
         return view('general/show')->with([
@@ -137,7 +143,7 @@ class UserController extends Controller
     
     public function search(SearchRequest $request, Profile $profile, Instrument $instrument)
     {   
-        //検索フォームから取得した居住地のデータを$prefectureSearchedに格納
+        //検索フォームから取得した居住地idを$prefectureIDに格納
         $prefectureId = $request['profile']['prefecture_id'];
         
         //検索フォームから取得した楽器のデータを$instrumentIdに格納
