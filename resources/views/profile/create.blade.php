@@ -27,7 +27,6 @@
             <h2>性別</h2>
             <input type="radio" name="profile[sex]" value='男性'>男性</input>
             <input type="radio" name="profile[sex]" value='女性'/>女性</input>
-            <input type="radio" name="profile[sex]" value='回答したくない'/>どちらでもない</input>
             <p class="title__error" style="color:red">{{ $errors->first('profile.sex') }}</p>
         </div>
         

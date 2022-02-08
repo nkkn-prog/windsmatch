@@ -18,6 +18,8 @@
         <p class='transition'><a href="/"class="btn btn-border-3">ホーム画面に戻る</a></p>
         @if($userId == $profile->user_id)
         <p class='transition'><a href="/profile/{{$profile->id}}/edit" class='btn btn-border-4'>プロフィールを編集する</a></p>
+        @else
+        <p class='transition'><a href="/chat/{{$profile->user_id}}" class='btn btn-border-4'>{{$profile->nickname}}さんとチャットする</a></p>
         @endif
     </div>
     <h1 class='center'>プロフィール</h1>
