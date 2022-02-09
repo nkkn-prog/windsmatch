@@ -19,6 +19,13 @@ class ChatController extends Controller
     
     public function index(User $user, Message $message){
         
+        //ユーザーのIDを取得
+        $receiver = $user->id;
+        $sender = Auth::id();
+        
+        //ある条件でmessagesからとってくる　条件: 自分がsenderで相手がreceiverの場合と、自分がreceiverで相手がsenderの場合
+        $message = Message::message;
+        dd($message);
         
         return view ('chat/chat')->with([
             'messages'=>$message->get(),
