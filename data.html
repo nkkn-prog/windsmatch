@@ -116,3 +116,14 @@
         
         <!--//ある条件でmessagesからとってくる　条件: 自分がsenderで相手がreceiverの場合と、自分がreceiverで相手がsenderの場合-->
         <!--$message = Message::where;-->
+        
+        <!--@if($message->send == Auth::id())-->
+        <!--        <div class="send" style="text-align: right">-->
+        <!--            <p>{{$message->message}}</p>-->
+        <!--        </div>-->
+        <!--    @endif-->
+        <!--    @if($message->recieve == \Illuminate\Support\Facades\Auth::id())-->
+        <!--        <div class="recieve" style="text-align: left">-->
+        <!--            <p>{{$message->message}}</p>-->
+        <!--        </div>-->
+        <!--    @endif-->

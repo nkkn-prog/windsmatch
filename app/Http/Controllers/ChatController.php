@@ -24,11 +24,12 @@ class ChatController extends Controller
         $sender = Auth::id();
         
         //ある条件でmessagesからとってくる　条件: 自分がsenderで相手がreceiverの場合と、自分がreceiverで相手がsenderの場合
-        $message = Message::message;
-        dd($message);
-        
+        $message = Message::where([['send',  $sender],['receive', $receiver]])
+                            ->orWhere([['send',  $receiver],['receive', $sender]])
+                            ->get();
+
         return view ('chat/chat')->with([
-            'messages'=>$message->get(),
+            'messages'=>$message,
             'receiver'=>$user
             ]);
     }
