@@ -18,7 +18,7 @@
     <h4>プロフィール作成は<a href ='/profile/create'>こちらから</a></h4>
     @else
     <div class='welcome'>
-        <h1><a href="/profile/{{$profile->user_id}}/show">{{Auth::user()->name}}さん</a>、WindsMatchへようこそ！</h1>
+        <h1><a href="/profile/{{$profile->id}}/show">{{Auth::user()->name}}さん</a>、WindsMatchへようこそ！</h1>
         <p class='transition'><a href="/profile/{{$profile->id}}/show" class="btn btn-border-1">自分のプロフィールを確認する</a></p>
         <p class='transition'><a href="/index" class="btn btn-border-2">他の人のプロフィールを見る</a></p>
     </div>
