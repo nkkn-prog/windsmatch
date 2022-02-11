@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\MessageRequest;
 use App\User;
 use App\Profile;
 use App\Instrument;
@@ -17,7 +18,7 @@ use UserController;
 class ChatController extends Controller
 {   
     
-    public function index(User $user, Message $message){
+    public function index(User $user, Message $message, Profile $profile){
         
         //ユーザーのIDを取得
         $receiver = $user->id;
@@ -27,14 +28,18 @@ class ChatController extends Controller
         $message = Message::where([['send',  $sender],['receive', $receiver]])
                             ->orWhere([['send',  $receiver],['receive', $sender]])
                             ->get();
-
+        $profile = $user->profile;
+        $image = $profile->image->image_path;
+        
         return view ('chat/chat')->with([
             'messages'=>$message,
-            'receiver'=>$user
+            'receiver'=>$user,
+            'profile'=>$profile,
+            'image'=>$image
             ]);
     }
     
-    public function store(Request $request, User $user, Message $message){
+    public function store(MessageRequest $request, User $user, Message $message){
         
         $post_message = $request['message'];
         $receiver = $user->id;

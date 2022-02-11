@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\MessageNotice;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,15 +25,16 @@ Route::get('/profile/{profile}/edit', 'UserController@edit');
 Route::post('/profile/{profile}/update', 'UserController@update');
 Route::post('/profile/search', 'UserController@search');
 Route::get('/chat/{user}', 'ChatController@index');
+// Route::get('/chat/{user}', function () {
+//     event(new MessageNotice);});
 Route::post('/chat/{user}', 'ChatController@store');
 });
-
-
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
 Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
+
 
 
 
