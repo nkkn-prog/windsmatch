@@ -206,3 +206,9 @@ a.btn-border-4:hover {
   -webkit-transform: rotate(-35deg);
   transform: rotate(-35deg);
 }
+
+.back-to-profile{
+  text-align: center;
+  font-weight:bold;
+  
+}

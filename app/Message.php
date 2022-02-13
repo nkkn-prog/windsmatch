@@ -17,4 +17,8 @@ class Message extends Model
     public function user(){
         return $this->belongsTo('App/Message');
     }
+    
+    public function like(){
+        return $this->belongsTo('App/Like');
+    }
 }

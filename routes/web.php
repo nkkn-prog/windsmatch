@@ -25,9 +25,8 @@ Route::get('/profile/{profile}/edit', 'UserController@edit');
 Route::post('/profile/{profile}/update', 'UserController@update');
 Route::post('/profile/search', 'UserController@search');
 Route::get('/chat/{user}', 'ChatController@index');
-// Route::get('/chat/{user}', function () {
-//     event(new MessageNotice);});
 Route::post('/chat/{user}', 'ChatController@store');
+Route::get('/recommend/{profile}', 'UserController@recommend');
 });
 
 Auth::routes();

@@ -21,6 +21,7 @@
         <h1><a href="/profile/{{$profile->id}}/show">{{Auth::user()->name}}さん</a>、WindsMatchへようこそ！</h1>
         <p class='transition'><a href="/profile/{{$profile->id}}/show" class="btn btn-border-1">自分のプロフィールを確認する</a></p>
         <p class='transition'><a href="/index" class="btn btn-border-2">他の人のプロフィールを見る</a></p>
+        <p class='transition'><a href="/recommend/{{$profile->id}}" class="btn btn-border-3">あなたへのオススメ</a></p>
     </div>
     @endif
     <!-- Option 1: Bootstrap Bundle with Popper -->

@@ -34,6 +34,52 @@ class UserController extends Controller
         
     }
     
+    public function recommend(Profile $profile, Instrument $instrument){
+        
+        //ログインユーザーのプロファイルから楽器IDを取得
+        $instrumentAuth = $profile->instruments;
+        
+        $instrumentIdArray = array();
+        
+        foreach($instrumentAuth as $data){
+            $instrumentId = $data->id;
+            array_push($instrumentIdArray, $instrumentId);
+        }
+        
+        //楽器データに紐付くプロフィールを格納しておく変数を$searchedProfilesと定義
+        $searchedProfiles = array();
+        
+        //取り出したコレクションから取り出したプロフィールを格納しておく変数を$profiles_arrayと定義
+        $profiles_array = array();
+        
+        //楽器からプロフィールを抽出
+        foreach($instrumentIdArray as $id){
+            $instrument = Instrument::find($id);
+            $instrumentProfile = $instrument->profiles;
+            array_push($searchedProfiles, $instrumentProfile);
+            foreach($searchedProfiles as $collection){
+                foreach($collection as $profiles){
+                    if($profiles->user_id != Auth::id()){
+                        array_push($profiles_array, $profiles);
+                    }
+                }  
+            }
+        }
+        //楽器からプロフィールを抽出終了
+        
+        $profiles_unique = array_unique($profiles_array);
+        
+        return view('general/recommend')->with([
+            'profiles_unique'=>$profiles_unique,
+            'instrument'=>$instrument,
+            
+            ]);
+        
+        
+        
+        
+    }
+    
     public function welcome()
     {   
         $user = Auth::user();
@@ -85,8 +131,8 @@ class UserController extends Controller
         $profile->genres()->attach($input_genres);
         //プロフィール内容の保存終了
         
-        //自身のプロフィール画面へリダイレクト
-        return redirect('/profile/'.$profile->id.'/show');
+        //オススメ画面へリダイレクト
+        return redirect('/recommend/'.$profile->id);
     }
     
     public function edit(User $user, Profile $profile, Instrument $instrument, Genre $genre, Prefecture $prefecture, Image $image)
