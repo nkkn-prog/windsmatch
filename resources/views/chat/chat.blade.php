@@ -56,12 +56,12 @@
                 <textarea name='message'rows="1" cols="30" placeholder='{{$receiver->name}}さんにメッセージを入力して送信'></textarea>
                 <p class="title__error" style="color:red">{{ $errors->first('message') }}</p>
                 <input type='submit' value= '送信'/>
-              </form>
+              </form></br>
+            <div class='back-to-profile'>
+              <a href='/profile/{{$profile->id}}/show' style='text-align:center'>{{$profile->nickname}}さんのプロフィール画面に戻る</a>
+            </div>
           </div>
         </div>
-      
-        <script src="https://js.pusher.com/7.0.3/pusher.min.js"></script>
-        <script src=“https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js”></script>
     </body>
-</html>
+  </html>
 @endsection

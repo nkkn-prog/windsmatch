@@ -51,6 +51,8 @@ class ChatController extends Controller
         
         $message->fill($input_message)->save();
         
+        // event(new MessageNotice($request->all()));
+        
         return redirect('/chat/'.$receiver);
     }
 
