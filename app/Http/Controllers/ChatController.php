@@ -14,6 +14,7 @@ use App\Image;
 use App\InstrumentProfile;
 use App\Message;
 use UserController;
+use App\Events\MessageNotice;
 
 class ChatController extends Controller
 {   
@@ -51,7 +52,7 @@ class ChatController extends Controller
         
         $message->fill($input_message)->save();
         
-        // event(new MessageNotice($request->all()));
+        event((new MessageNotice($message)));
         
         return redirect('/chat/'.$receiver);
     }

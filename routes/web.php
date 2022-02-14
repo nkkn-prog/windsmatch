@@ -27,6 +27,9 @@ Route::post('/profile/search', 'UserController@search');
 Route::get('/chat/{user}', 'ChatController@index');
 Route::post('/chat/{user}', 'ChatController@store');
 Route::get('/recommend/{profile}', 'UserController@recommend');
+Route::get('/hello', function () {
+            event(new MessageNotice);
+            });
 });
 
 Auth::routes();

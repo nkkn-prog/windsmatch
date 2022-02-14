@@ -2,10 +2,14 @@
 /*ここからindex.blade.phpのCSS*/
 .center{
     text-align: center;
+    margin: 30px 0px;
 }
 
 .profile-index{
-    border:solid 2px black;
+    background-color:#fafad2;/*背景色*/
+    border:1px solid #ffd700;/*枠線*/
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);/*影*/
+    color:#000000;/*文字色*/
     text-align: center;
 }
 
@@ -31,6 +35,11 @@
 
 .general-transition{
     text-align: center;
+}
+
+.profile-search-button{
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 /*ここからwelcome.blade.phpのCSS*/
@@ -211,4 +220,69 @@ a.btn-border-4:hover {
   text-align: center;
   font-weight:bold;
   
+}
+
+
+/*ここからcreate.blade.php*/
+.nickname{
+  text-align: center;
+  width:600px;
+  margin:auto;
+  margin-top:20px;
+}
+
+.sex{
+  text-align: center;
+  width:600px;
+  margin:25px auto;
+}
+
+.age{
+  text-align: center;
+  width:600px;
+  margin:25px auto;
+}
+
+.prefecture{
+  text-align: center;
+  width:600px;
+  margin:35px auto;
+}
+
+.instrument{
+  text-align: center;
+  width:600px;
+  margin:50px auto;
+}
+
+.genre{
+  text-align: center;
+  width:600px;
+  margin:50px auto;
+}
+
+.musical_experience{
+  text-align: center;
+  width:600px;
+  margin:30px auto;
+}
+.message{
+  text-align: center;
+  width:600px;
+  margin:0px auto;
+}
+
+.image{
+  text-align: center;
+  margin:50px auto;
+}
+
+.button{
+  text-align: center;
+}
+
+.back-to-home{
+  text-align: center;
+  font-weight:bold;
+  padding-top:30px;
 }

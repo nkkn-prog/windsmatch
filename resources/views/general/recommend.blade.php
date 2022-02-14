@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{{ asset('css/windsmatch.css') }}" rel="stylesheet">
     <title>recommend.blade.php</title>
 </head>
 <body>
@@ -15,7 +16,7 @@
                 <h3>あなたにオススメできる方が見つかりませんでした</h3>
                 <p><a href='/index'>検索に戻る</a></p>
             @else
-                <h1 class='center'>プロフィール一覧</h1>
+                <h1 class='center'>あなたにオススメな方</h1>
                     <div class='row align-items-start'>
                         @foreach($profiles_unique as $profile)
                         <div class='col-4 profile-index'>

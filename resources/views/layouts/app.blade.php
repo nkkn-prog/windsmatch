@@ -74,8 +74,6 @@
 
         <main class="py-4">
             @yield('content')
-            <script src="https://js.pusher.com/7.0.3/pusher.min.js"></script>
-            <script src=“https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js”></script>
         </main>
     </div>
 </body>
