@@ -8,6 +8,7 @@ use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\SearchRequest;
 use App\User;
 use App\Profile;
+use App\Age;
 use App\Instrument;
 use App\Genre;
 use App\Prefecture;
@@ -20,7 +21,6 @@ use DB;
 
 class UserController extends Controller
 {   
-    
     public function index(User $user, Profile $profile, Instrument $instrument, Genre $genre, Prefecture $prefecture)
     {   
         $userId = Auth::id();
@@ -75,9 +75,6 @@ class UserController extends Controller
             
             ]);
         
-        
-        
-        
     }
     
     public function welcome()
@@ -91,7 +88,7 @@ class UserController extends Controller
         
     }
     
-    public function create(User $user, Profile $profile, Instrument $instrument, Genre $genre, Prefecture $prefecture,Image $image)
+    public function create(User $user, Profile $profile, Age $age,Instrument $instrument, Genre $genre, Prefecture $prefecture,Image $image)
     {   
         //ログインユーザーのIDを取得
         $user = Auth::user();
@@ -101,6 +98,7 @@ class UserController extends Controller
         
         return view('profile/create')->with([
             'profile'=>$profile,
+            'ages'=>$age->get(),
             'instruments'=>$instrument->get(),
             'genres'=>$genre->get(),
             'prefectures'=>$prefecture->get(),
@@ -111,6 +109,7 @@ class UserController extends Controller
      
     public function store(ProfileRequest $request, Profile $profile, Image $image)
     {  
+        
         //s3へのファイルアップロード開始
         $profile_image = $request->file('image');
         $path = Storage::disk('s3')->putFile('myprefix', $profile_image, 'public');
@@ -219,7 +218,7 @@ class UserController extends Controller
         
         foreach($profiles_array as $profile){
             $prefectureSearched = $profile->prefecture_id;
-            if($prefectureSearched == $prefectureId){
+            if(($prefectureSearched == $prefectureId) && ($profile->user_id != Auth::id())){
                 array_push($profilesAllSearched, $profile);
             }
         }

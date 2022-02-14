@@ -22,6 +22,7 @@
                             <div class="profile">
                                 <h2><a href='/profile/{{$profile->id}}/show'>{{$profile->nickname}}</a></h2>
                             </div>
+                            <p>住んでいるところ: {{ $profile->prefecture->name}}</p>
                             <div>楽器: 
                                 @foreach($profile->instruments as $instrument)
                                 <span>{{$instrument->name}}</span>

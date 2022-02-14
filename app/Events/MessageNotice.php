@@ -9,6 +9,7 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use App\ChatController;
 
 class MessageNotice implements ShouldBroadcast
 {
@@ -19,9 +20,11 @@ class MessageNotice implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct()
+    public $message; 
+    
+    public function __construct($message)
     {
-        //
+        $this->message = $message;
     }
 
     /**
@@ -31,6 +34,6 @@ class MessageNotice implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('notice_message');
+        return new Channel('message-notice-channel',$this->message);
     }
 }

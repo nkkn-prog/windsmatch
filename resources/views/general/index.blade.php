@@ -13,13 +13,14 @@
     <title>index.blade.php</title>
 </head>
 <body>
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    プロフィール検索(ここを押すと開きます)</button>
+    <div class='profile-search-button'>
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        プロフィール検索(ここを押すと開きます)</button>
+    </div>
         <div class="collapse" id="collapseExample">
             <div class="card card-body center">
                 <form action='/profile/search' method='POST'>
                     @csrf
-                    
                     <div class ='prefecture'>
                         <h3>住んでいる都道府県</h3>
                         <select name='profile[prefecture_id]'>
@@ -71,7 +72,7 @@
             <img src="{{$profile->image->image_path}}" alt="" class='image-index'/>
         </div>
     @endforeach
-    <p><a href='/'>ホーム画面に戻る</a></p>
+    <p class='back-to-home'><a href='/'>ホーム画面に戻る</a></p>
     </div>
     
     <!-- Option 1: Bootstrap Bundle with Popper -->
