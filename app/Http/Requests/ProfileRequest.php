@@ -26,7 +26,7 @@ class ProfileRequest extends FormRequest
         return [
             'profile.nickname'=>'required|string|max:20',
             'profile.sex'=>'required|string',
-            'profile.age_id'=>'required',
+            'profile.age'=>'required|integer|between:0,120',
             'profile.prefecture_id'=>'required',
             'profile.musical_experience'=>'required|string|max:50',
             'profile.message'=>'required|string|max:300',

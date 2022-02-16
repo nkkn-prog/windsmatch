@@ -134,7 +134,7 @@ class UserController extends Controller
         return redirect('/recommend/'.$profile->id);
     }
     
-    public function edit(User $user, Profile $profile, Instrument $instrument, Genre $genre, Prefecture $prefecture, Image $image)
+    public function edit(User $user, Profile $profile, Age $age,Instrument $instrument, Genre $genre, Prefecture $prefecture, Image $image)
     {   
         // $user = Auth::user()->id;
         // $instrument_selected = Profile::find($user)->instrument
