@@ -4,28 +4,28 @@
 @section('content')
 <html>
     <head>
-        <script 
-            src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-            crossorigin="anonymous">
-        </script>
-        <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-        <script>
+        <!--<script -->
+        <!--    src="https://code.jquery.com/jquery-3.6.0.min.js"-->
+        <!--    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="-->
+        <!--    crossorigin="anonymous">-->
+        <!--</script>-->
+        <!--<script src="https://js.pusher.com/7.0/pusher.min.js"></script>-->
+        <!--<script>-->
   
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
+        <!--// Enable pusher logging - don't include this in production-->
+        <!--Pusher.logToConsole = true;-->
         
-        var pusher = new Pusher('a3e296f28299c4fa3876', {
-          cluster: 'ap3',
-          forceTLS: true
-        });
+        <!--var pusher = new Pusher('a3e296f28299c4fa3876', {-->
+        <!--  cluster: 'ap3',-->
+        <!--  forceTLS: true-->
+        <!--});-->
         
-        var channel = pusher.subscribe('message-notice-channel');
-        channel.bind('MessageNotice', function(data) {
-               console.log('received a message');
-               console.log(data);
-        });
-        </script>
+        <!--var channel = pusher.subscribe('message-notice-channel');-->
+        <!--channel.bind('MessageNotice', function(data) {-->
+        <!--       console.log('received a message');-->
+        <!--       console.log(data);-->
+        <!--});-->
+        <!--</script>-->
         
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,8 +35,6 @@
     <body>
         <h3 class='navy-box'>{{$profile->nickname}}さんとのチャット画面</h3>
         <div class= 'background-chat'>
-          <div id='chat'>
-            <private-chatting>
               <div class="line-bc">
                   @foreach($messages as $message)
                     @if($message->send == Auth::id())
@@ -69,10 +67,7 @@
                 </div>
               </div>
             </div>
-          </private-chatting>
         </div>
-        <script src="/js/app.js"></script>
-        <script src=“https://cdnjs.cloudflare.com/ajax/libs/push.js/0.0.11/push.min.js”></script>
     </body>
     
   </html>
