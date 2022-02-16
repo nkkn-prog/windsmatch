@@ -1,78 +1,71 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+アプリの概要
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+▼WindsMatchとは？
 
-## About Laravel
+楽器を趣味としている人を繋げるマッチングサービスで、ミュージックスクールに行かなくても同じ楽器ができる人と繋がることができる。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+▼背景
+自身が中高吹奏楽部出身で、社会人以後に楽器を趣味として始めようとした時、レッスンスクールだけの出会いでは金銭的にも時間的にもコストがかかると考えた。
+そこで、楽器ができる人同士のマッチングサービスがあれば気軽に同趣味の人と繋がれると考え、このアプリの制作を開始した。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+▼使用技術
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+言語: PHP 7.3.33
 
-## Learning Laravel
+フレームワーク: Laravel 6.20.44
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+▼機能一覧
 
-## Laravel Sponsors
+・新規登録機能(デフォルト & GoogleAPI連携)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+・ログイン機能(デフォルト & GoogleAPI連携)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+・プロフィール作成機能(ニックネーム、性別、居住地、出来る楽器、好きなジャンル、楽器歴、ひとこと、画像)
 
-## Contributing
+・写真アップロード機能(AWS S3)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+・バリデーション機能
 
-## Code of Conduct
+・パスワード暗号化
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+・条件別検索機能
 
-## Security Vulnerabilities
+・オススメ機能
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+・チャット機能
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+▼注力した機能
+
+1)条件別検索機能
+
+多対多のリレーションや中間テーブルを用いて、選択した楽器と居住地から該当するプロフィールを検索する機能を実装した。
+ユーザーは、①近くに住んでいる ②同じ楽器ができる という情報があればオフラインで気軽に接点を持つことができると考え、
+検索機能に楽器と居住地を設定した。
+また検索機能を隠せるcss設定を行い、画面の煩雑さを極力無くす工夫をした。
+
+2)チャット機能
+
+ユーザー同士が気軽にメッセージを送り合えるようなチャット機能を実装した。
+連絡の手段としてユーザー登録時のメールアドレスの使用を考えたが、セキュリティーの観点からプライベートメッセージ機能を採用した。
+また、ユーザーが慣れているあろうLINE風のメッセージ画面を実装し、利用する際のハードルを下げる工夫をした。
+
+
+▼環境構築の手順
+
+1)AWS Cloud9を用いて、プロジェクトを作成
+
+2)データベース(MariaDB)の設定
+
+3)Git, GitHubの設定
+
+▼デモ画面(動画)
+Google Drive URL
+https://drive.google.com/file/d/13p_mySXzDc9FIIrq0Q2xuLvCFjXirCz_/view?usp=sharing
+
+▼テストアカウント
+
+E-mail: test1@gmail.com / Password:test1111
+
+E-mail: test2@gmail.com / Password:test2222

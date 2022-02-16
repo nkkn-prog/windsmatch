@@ -78,6 +78,6 @@
     </div>
 </body>
 <footer>
-    <p>©︎2022 Naoki Ando</p>
+    <p style='text-align:center'>©︎2022 Naoki Ando</p>
 </footer>
 </html>
