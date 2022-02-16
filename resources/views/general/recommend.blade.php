@@ -14,7 +14,7 @@
 <body>
             @if($profiles_unique == null)
                 <h3>あなたにオススメできる方が見つかりませんでした</h3>
-                <p><a href='/index'>検索に戻る</a></p>
+                <p><a href='/index'>プロフィール一覧に戻る</a></p>
             @else
                 <h1 class='center'>あなたにオススメな方</h1>
                     <div class='row align-items-start'>

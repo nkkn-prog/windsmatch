@@ -222,7 +222,6 @@ a.btn-border-4:hover {
   
 }
 
-
 /*ここからcreate.blade.php*/
 .nickname{
   text-align: center;
@@ -252,13 +251,14 @@ a.btn-border-4:hover {
 .instrument{
   text-align: center;
   width:600px;
-  margin:50px auto;
+  margin:50px auto 10px auto;
 }
 
 .genre{
   text-align: center;
   width:600px;
-  margin:50px auto;
+  margin: auto;
+  margin-top:20px;
 }
 
 .musical_experience{
@@ -286,3 +286,4 @@ a.btn-border-4:hover {
   font-weight:bold;
   padding-top:30px;
 }
+
