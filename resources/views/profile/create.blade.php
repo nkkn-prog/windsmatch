@@ -15,7 +15,7 @@
     @if($profile == null)
     <!--プロフィール作成-->
     <h2 style='text-align:center'>{{Auth::user()->name}}さんのプロフィール作成ページ</h2>
-    <h2 style='text-align:center'>プロフィールを作成しよう</h2>
+    <h2 style='text-align:center'>プロフィールを作成しよう</h2><br>
     <form action ="/profile/complete" method='POST' enctype="multipart/form-data">
         @csrf
             <div class='nickname'>
@@ -33,9 +33,9 @@
             
             <div class ='age'>
                 <h2>年齢</h2>
-                <select name='profile[age_id]'>
-                @foreach($ages as $age)
-                    <option value="{{$age->id}}">{{$age->age}}</option>
+                <select name='profile[age]'>
+                @for($age=1; $age<=120; $age++ )
+                    <option value="{{$age}}">{{$age}}</option>
                 @endforeach
                 <p class="title__error" style="color:red">{{ $errors->first('profile.age_id') }}</p>
                 </select>
@@ -80,7 +80,7 @@
             </div></br>
             
             <div class ='message'>
-                <h2>ひとこと</h2>
+                <h2>自己紹介</h2>
                 <textarea name="profile[message]" row="3" colm="30" placeholder="ひとこと">{{ old('profile.message') }}</textarea>
                 <p class="title__error" style="color:red">{{ $errors->first('profile.message') }}</p>
             </div>
