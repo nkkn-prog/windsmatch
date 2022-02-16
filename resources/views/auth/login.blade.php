@@ -83,8 +83,6 @@
         <p>なおgoogleアカウント、もしくは右上のregisterから新規登録もできます。</p><br>
         <p>E-mail: test1@gmail.com   /   Password:test1111</p>
         <p>E-mail: test2@gmail.com   /   Password:test2222</p>
-        <p>E-mail: test3@gmail.com   /   Password:test3333</p>
-        <p>E-mail: test4@gmail.com   /   Password:test4444</p>
     </div>
 </div>
 @endsection
