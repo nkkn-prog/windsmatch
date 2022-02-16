@@ -18,6 +18,7 @@
     <h2 style='text-align:center'>プロフィールを作成しよう</h2><br>
     <form action ="/profile/complete" method='POST' enctype="multipart/form-data">
         @csrf
+        <div class=''
             <div class='nickname'>
                 <h3>ニックネーム</h3>
                 <input type='text' name="profile[nickname]" placeholder='ニックネーム' value="{{ old('profile.nickname') }}" />

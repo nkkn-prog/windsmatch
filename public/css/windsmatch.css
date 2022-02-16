@@ -222,7 +222,6 @@ a.btn-border-4:hover {
   
 }
 
-
 /*ここからcreate.blade.php*/
 .nickname{
   text-align: center;
@@ -286,3 +285,4 @@ a.btn-border-4:hover {
   font-weight:bold;
   padding-top:30px;
 }
+

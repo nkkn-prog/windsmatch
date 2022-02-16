@@ -64,8 +64,8 @@
                                 @endif
                             </div>
                         </div>
-                    </form>
-                    <div class='offset-md-4 button'>
+                    </form><br>
+                    <div class='offset-md-4'>
                     <a href="/login/google" class="btn btn-danger" role="button">
                     Google Login
                     </a>

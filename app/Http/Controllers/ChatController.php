@@ -54,5 +54,6 @@ class ChatController extends Controller
         
         return redirect('/chat/'.$receiver);
     }
+    
 
 }

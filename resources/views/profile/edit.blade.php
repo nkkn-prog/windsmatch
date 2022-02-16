@@ -16,8 +16,6 @@
     <h2 style='text-align:center'>プロフィールを編集する</h2>
     <form action ="/profile/{{$profile->id}}/update" method='POST' enctype="multipart/form-data">
         @csrf
-        <form action ="/profile/complete" method='POST' enctype="multipart/form-data">
-        @csrf
             <div class='nickname'>
                 <h3>ニックネーム</h3>
                 <input type='text' name="profile[nickname]" placeholder='ニックネーム' value="{{$profile->nickname}}" />

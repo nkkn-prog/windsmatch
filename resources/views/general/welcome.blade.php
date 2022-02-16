@@ -14,8 +14,8 @@
 </head>
 <body>
     @if($profile == null)
-    <h4>あなたはプロフィールを作成していません！</h4>
-    <h4>プロフィール作成は<a href ='/profile/create'>こちらから</a></h4>
+    <h4 class='center'>あなたはプロフィールを作成していません！</h4>
+    <h4 class='center'>プロフィール作成は<a href ='/profile/create'>こちらから</a></h4>
     @else
     <div class='welcome'>
         <h1><a href="/profile/{{$profile->id}}/show">{{Auth::user()->name}}さん</a>、WindsMatchへようこそ！</h1>

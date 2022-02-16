@@ -69,9 +69,12 @@
                             </div>
                         </div>
                     </form>
-                    <a href="/login/google" class="btn btn-secondary"  role="button">
-                        Googleで登録する
+                    <div class='offset-md-4'>
+                    <a href="/login/google" class="btn btn-danger" role="button">
+                    Googleで登録する
                     </a>
+                    </div>
+                    <br>
                 </div>
             </div>
         </div>
