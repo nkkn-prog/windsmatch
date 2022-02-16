@@ -8,18 +8,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{{ asset('css/windsmatch.css') }}" rel="stylesheet">
     <title>edit.blade.php</title>
 </head>
 <body>
-    {{Auth::user()->name}}さんのページ
-    <h1>プロフィールを編集する</h1>
+    <h2 style='text-align:center'>{{Auth::user()->name}}さんのページ</h2>
+    <h2 style='text-align:center'>プロフィールを編集する</h2>
     <form action ="/profile/{{$profile->id}}/update" method='POST' enctype="multipart/form-data">
         @csrf
         <form action ="/profile/complete" method='POST' enctype="multipart/form-data">
         @csrf
             <div class='nickname'>
                 <h3>ニックネーム</h3>
-                <input type='text' name="profile[nickname]" placeholder='ニックネーム' value="{{ old('profile.nickname') }}" />
+                <input type='text' name="profile[nickname]" placeholder='ニックネーム' value="{{$profile->nickname}}" />
                 <p class="title__error" style="color:red">{{ $errors->first('profile.nickname') }}</p>
             </div>
             
@@ -32,11 +33,11 @@
             
             <div class ='age'>
                 <h2>年齢</h2>
-                <select name='profile[age_id]'>
-                @foreach($ages as $age)
-                    <option value="{{$age->id}}">{{$age->age}}</option>
-                @endforeach
-                <p class="title__error" style="color:red">{{ $errors->first('profile.age_id') }}</p>
+                <select name='profile[age]'>
+                @for($age=1; $age<=120; $age++ )
+                    <option value='{{$age}}'>{{$age}}</option>
+                @endfor
+                <p class="title__error" style="color:red">{{ $errors->first('profile.age') }}</p>
                 </select>
             </div>
             
@@ -74,13 +75,13 @@
             
             <div class ='musical_experience'>
                 <h2>楽器歴</h2>
-                <input type='text' name="profile[musical_experience]" placeholder='◯年以上' value="{{ old('profile.musical_experience') }}"/>
+                <input type='text' name="profile[musical_experience]" placeholder='◯年以上' value='{{$profile->musical_experience}}'/>
                 <p class="title__error" style="color:red">{{ $errors->first('profile.musical_experience') }}</p>
             </div></br>
             
             <div class ='message'>
                 <h2>自己紹介</h2>
-                <textarea name="profile[message]" row="3" colm="30" placeholder="ひとこと">{{ old('profile.message') }}</textarea>
+                <textarea name="profile[message]" row="3" colm="30" placeholder="ひとこと">{{$profile->message}}</textarea>
                 <p class="title__error" style="color:red">{{ $errors->first('profile.message') }}</p>
             </div>
             

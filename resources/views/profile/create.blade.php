@@ -36,7 +36,7 @@
                 <select name='profile[age]'>
                 @for($age=1; $age<=120; $age++ )
                     <option value="{{$age}}">{{$age}}</option>
-                @endforeach
+                @endfor
                 <p class="title__error" style="color:red">{{ $errors->first('profile.age_id') }}</p>
                 </select>
             </div>

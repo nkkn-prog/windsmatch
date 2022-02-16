@@ -88,7 +88,7 @@ class UserController extends Controller
         
     }
     
-    public function create(User $user, Profile $profile, Age $age,Instrument $instrument, Genre $genre, Prefecture $prefecture,Image $image)
+    public function create(User $user, Profile $profile, Instrument $instrument, Genre $genre, Prefecture $prefecture,Image $image)
     {   
         //ログインユーザーのIDを取得
         $user = Auth::user();
@@ -98,7 +98,6 @@ class UserController extends Controller
         
         return view('profile/create')->with([
             'profile'=>$profile,
-            'ages'=>$age->get(),
             'instruments'=>$instrument->get(),
             'genres'=>$genre->get(),
             'prefectures'=>$prefecture->get(),
@@ -134,10 +133,8 @@ class UserController extends Controller
         return redirect('/recommend/'.$profile->id);
     }
     
-    public function edit(User $user, Profile $profile, Age $age,Instrument $instrument, Genre $genre, Prefecture $prefecture, Image $image)
+    public function edit(Profile $profile, Instrument $instrument, Genre $genre, Prefecture $prefecture, Image $image)
     {   
-        // $user = Auth::user()->id;
-        // $instrument_selected = Profile::find($user)->instrument
         return view('profile/edit')->with([
             'profile'=>$profile,
             'instruments'=>$instrument->get(),
