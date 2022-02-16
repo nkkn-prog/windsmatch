@@ -16,8 +16,8 @@
 
                     You are logged in!
                 </div>
-                    <h3><a href="/profile/create">プロフィール作成が済んでいない方はこちら</a></h3>
-                    <h3><a href="/">プロフィール作成済みの方はこちら</a></h3>
+                    <p class='transition'><a href="/profile/create" class="btn btn-border-1">プロフィール作成が済んでいない方はこちら</a></p>
+                    <p class='transition'><a href="/" class="btn btn-border-2">プロフィール作成済みの方はこちら</a></p>
                 </div>
             </div>
         </div>

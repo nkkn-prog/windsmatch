@@ -64,17 +64,27 @@
                                 @endif
                             </div>
                         </div>
-                    </form><br>
-                    <div class='offset-md-4'>
-                    <a href="/login/google" class="btn btn-danger" role="button">
-                    Google Login
-                    </a>
+                    </form>
+                    <div class="form-group row mb-0 google-button">
+                        <div class="col-md-8 offset-md-4">
+                            <a href="/login/google" class="btn btn-danger" role="button">
+                            Google Login
+                            </a>
+                        </div>
                     </div>
                     <br>
                     <p style=text-align:center>登録がお済みでない方は<a href='/register'>こちら</a></p>
                 </div>
             </div>
         </div>
+    </div>
+    <div class='login-test'>
+        <p>以下テストアカウントです。コピペしてお使いください。</p>
+        <p>なおgoogleアカウント、もしくは右上のregisterから新規登録もできます。</p><br>
+        <p>E-mail: test1@gmail.com   /   Password:test1111</p>
+        <p>E-mail: test2@gmail.com   /   Password:test2222</p>
+        <p>E-mail: test3@gmail.com   /   Password:test3333</p>
+        <p>E-mail: test4@gmail.com   /   Password:test4444</p>
     </div>
 </div>
 @endsection
