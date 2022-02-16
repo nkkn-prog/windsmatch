@@ -8,6 +8,7 @@ use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\SearchRequest;
 use App\User;
 use App\Profile;
+use App\Age;
 use App\Instrument;
 use App\Genre;
 use App\Prefecture;
@@ -20,10 +21,12 @@ use DB;
 
 class UserController extends Controller
 {   
-    
     public function index(User $user, Profile $profile, Instrument $instrument, Genre $genre, Prefecture $prefecture)
     {   
+        //ログインユーザーのIDを取得
         $userId = Auth::id();
+        
+        //ログインユーザーを除いたプロフィールを取得
         $profile = Profile::whereNotIn('user_id', [$userId])->get();
         return view('general/index')->with([
             'profiles'=>$profile,
@@ -34,9 +37,59 @@ class UserController extends Controller
         
     }
     
+    public function recommend(Profile $profile, Instrument $instrument){
+        
+        //ログインユーザーのプロファイルから楽器IDを取得
+        $instrumentAuth = $profile->instruments;
+        
+        $instrumentIdArray = array();
+        
+        foreach($instrumentAuth as $data){
+            $instrumentId = $data->id;
+            array_push($instrumentIdArray, $instrumentId);
+        }
+        
+        //楽器データに紐付くプロフィールを格納しておく変数を$searchedProfilesと定義
+        $searchedProfiles= array();
+        
+        //楽器からプロフィールを抽出
+        foreach($instrumentIdArray as $id){
+            $instrument = Instrument::where('id', [$id])->first();
+            $instrumentProfile = $instrument->profiles;
+            foreach($instrumentProfile as $profiles){
+                if(($profiles->user_id != Auth::id())){
+                        array_push($searchedProfiles, $profiles);
+                }
+            }
+        }  
+        //楽器からプロフィールを抽出終了
+        
+        //該当するプロフィールのidを全部取得し、重複を無くす
+        $id_list = array_column( $searchedProfiles, 'id');
+        $id_list_unique = array_unique($id_list);
+
+        //重複を省いたidを元にプロフィールを取得
+        $profiles_unique = array();
+        foreach($id_list_unique as $profileId){
+            $profilesAllSearched = Profile::where('id', $profileId)->get();
+            foreach($profilesAllSearched as $profiles)
+            array_push($profiles_unique, $profiles);
+        }
+        
+        return view('general/recommend')->with([
+            'profiles_unique'=>$profiles_unique,
+            'instrument'=>$instrument,
+            
+            ]);
+        
+    }
+    
     public function welcome()
     {   
+        //ログインユーザーのIDを取得
         $user = Auth::user();
+        
+        //ログインユーザーのプロフィール情報を取得
         $profile = $user->profile;
         
         return view('general/welcome')->with([
@@ -65,6 +118,7 @@ class UserController extends Controller
      
     public function store(ProfileRequest $request, Profile $profile, Image $image)
     {  
+        
         //s3へのファイルアップロード開始
         $profile_image = $request->file('image');
         $path = Storage::disk('s3')->putFile('myprefix', $profile_image, 'public');
@@ -85,14 +139,12 @@ class UserController extends Controller
         $profile->genres()->attach($input_genres);
         //プロフィール内容の保存終了
         
-        //自身のプロフィール画面へリダイレクト
-        return redirect('/profile/'.$profile->id.'/show');
+        //オススメ画面へリダイレクト
+        return redirect('/recommend/'.$profile->id);
     }
     
-    public function edit(User $user, Profile $profile, Instrument $instrument, Genre $genre, Prefecture $prefecture, Image $image)
+    public function edit(Profile $profile, Instrument $instrument, Genre $genre, Prefecture $prefecture, Image $image)
     {   
-        // $user = Auth::user()->id;
-        // $instrument_selected = Profile::find($user)->instrument
         return view('profile/edit')->with([
             'profile'=>$profile,
             'instruments'=>$instrument->get(),
@@ -150,9 +202,6 @@ class UserController extends Controller
         $instrumentId  = $request['instruments_array'];
         
         //楽器データに紐付くプロフィールを格納しておく変数を$searchedProfilesと定義
-        $searchedProfiles = array();
-        
-        //取り出したコレクションから取り出したプロフィールを格納しておく変数を$profiles_arrayと定義
         $profiles_array = array();
         
         
@@ -160,24 +209,26 @@ class UserController extends Controller
         foreach($instrumentId as $id){
             $instrument = Instrument::find($id);
             $instrumentProfile = $instrument->profiles;
-            array_push($searchedProfiles, $instrumentProfile);
-            foreach($searchedProfiles as $collection){
-                foreach($collection as $profiles){
+            foreach($instrumentProfile as $profiles){
                 array_push($profiles_array, $profiles);
                 }
-            }   
-        }
+            }
         //楽器からプロフィールを抽出終了
         
+        //楽器と居住地で絞り込んだプロフィールを格納する変数を定義。
         $profilesAllSearched = array();
         
+        //楽器で絞り込んだプロフィールの中で、選択した居住地に当てはまるプロフィールを抽出。
         foreach($profiles_array as $profile){
             $prefectureSearched = $profile->prefecture_id;
-            if($prefectureSearched == $prefectureId){
+            //自身のプロフィールを除外
+            if(($prefectureSearched == $prefectureId) && ($profile->user_id != Auth::id())){
                 array_push($profilesAllSearched, $profile);
             }
         }
+        //抽出終わり
         
+        //抽出したプロフィールに重複が無いよう設定
         $profiles_unique = array_unique($profilesAllSearched);
         
         

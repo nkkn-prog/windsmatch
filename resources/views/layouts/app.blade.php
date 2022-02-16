@@ -77,4 +77,7 @@
         </main>
     </div>
 </body>
+<footer>
+    <p>©︎2022 Naoki Ando</p>
+</footer>
 </html>

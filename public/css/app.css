@@ -10962,3 +10962,45 @@ a.text-dark:focus {
   }
 }
 
+.google-button{
+  margin-top:20px;
+}
+a.btn-border-1 {
+  border: 2px solid #000;
+  border-radius: 0;
+  background: #fff;
+  font-size:130%;
+  padding:10px;
+}
+
+a.btn-border-1:hover {
+  color:#fff ;
+  font-weight:bold;
+  background: #e2041b;
+}
+a.btn-border-2 {
+  border: 2px solid #000;
+  border-radius: 0;
+  background: #fff;
+  font-size:130%;
+  padding:10px;
+  margin:20px auto;
+
+}
+
+a.btn-border-2:hover {
+  color:#fff ;
+  font-weight:bold;
+  background: #2ca9e1;
+}
+
+.transition {
+    margin:0 auto;
+    display: inline-block;
+}
+
+.login-test{
+    text-align: center;
+    margin: 30px 0px;
+    font-weight: bold;
+}
