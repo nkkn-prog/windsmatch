@@ -115,7 +115,6 @@
         <!--$sender = Auth::id();-->
         
         <!--//ある条件でmessagesからとってくる　条件: 自分がsenderで相手がreceiverの場合と、自分がreceiverで相手がsenderの場合-->
-<<<<<<< HEAD
         <!--$message = Message::where;-->
         
         <!--@if($message->send == Auth::id())-->
@@ -128,6 +127,26 @@
         <!--            <p>{{$message->message}}</p>-->
         <!--        </div>-->
         <!--    @endif-->
-=======
-        <!--$message = Message::where;-->
->>>>>>> 38ee0ee7aace65eb6f98c3a9f56a0121ebfa7279
+
+        <!--<script -->
+        <!--    src="https://code.jquery.com/jquery-3.6.0.min.js"-->
+        <!--    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="-->
+        <!--    crossorigin="anonymous">-->
+        <!--</script>-->
+        <!--<script src="https://js.pusher.com/7.0/pusher.min.js"></script>-->
+        <!--<script>-->
+  
+        <!--// Enable pusher logging - don't include this in production-->
+        <!--Pusher.logToConsole = true;-->
+        
+        <!--var pusher = new Pusher('a3e296f28299c4fa3876', {-->
+        <!--  cluster: 'ap3',-->
+        <!--  forceTLS: true-->
+        <!--});-->
+        
+        <!--var channel = pusher.subscribe('message-notice-channel');-->
+        <!--channel.bind('MessageNotice', function(data) {-->
+        <!--       console.log('received a message');-->
+        <!--       console.log(data);-->
+        <!--});-->
+        <!--</script>-->

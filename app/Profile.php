@@ -25,6 +25,11 @@ class Profile extends Model
         return $this-> belongsTo('App\User');
     }
     
+    public function age(){
+        
+        return $this-> belongsTo('App\Age');
+    }
+    
     public function instruments()
     {
         return $this-> belongsToMany('App\Instrument');

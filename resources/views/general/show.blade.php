@@ -24,21 +24,21 @@
     </div>
     <h1 class='center'>プロフィール</h1>
     <div class="profile-show">
-        <h2>名前:{{ $profile->nickname }}</h2>
-        <p>一言:{{ $profile->message }}</p>
+        <h2>名前:{{ $profile->nickname }}</h2></br>
+        <p>自己紹介:{{ $profile->message }}</p>
         <p>住んでいるところ: {{ $profile->prefecture->name}}</p>
         
         <div>楽器: 
         @foreach($profile->instruments as $instrument)
         <span>{{$instrument->name}}</span>
         @endforeach
-        </div>
+        </div></br>
         
         <div>ジャンル: 
         @foreach($profile->genres as $genre)
         <span>{{$genre->name}}</span>
         @endforeach
-        </div>
+        </div></br>
         
         <p>楽器歴:{{$profile->musical_experience}}</p>
         <img src="{{$profile->image->image_path}}" alt="" class='image-show'/>

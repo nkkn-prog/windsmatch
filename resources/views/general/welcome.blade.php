@@ -14,13 +14,14 @@
 </head>
 <body>
     @if($profile == null)
-    <h4>あなたはプロフィールを作成していません！</h4>
-    <h4>プロフィール作成は<a href ='/profile/create'>こちらから</a></h4>
+    <h4 class='center'>あなたはプロフィールを作成していません！</h4>
+    <h4 class='center'>プロフィール作成は<a href ='/profile/create'>こちらから</a></h4>
     @else
     <div class='welcome'>
         <h1><a href="/profile/{{$profile->id}}/show">{{Auth::user()->name}}さん</a>、WindsMatchへようこそ！</h1>
         <p class='transition'><a href="/profile/{{$profile->id}}/show" class="btn btn-border-1">自分のプロフィールを確認する</a></p>
         <p class='transition'><a href="/index" class="btn btn-border-2">他の人のプロフィールを見る</a></p>
+        <p class='transition'><a href="/recommend/{{$profile->id}}" class="btn btn-border-3">あなたへのオススメ</a></p>
     </div>
     @endif
     <!-- Option 1: Bootstrap Bundle with Popper -->
