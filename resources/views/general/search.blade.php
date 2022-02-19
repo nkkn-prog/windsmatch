@@ -11,12 +11,16 @@
         <title>search.blade.php</title>
     </head>
     <body>
+             <!--$profiles_uniqueに値が入っていない場合-->
             @if($profiles_unique == null)
                 <h3>お探しの方はまだ登録されていないようです</h3>
                 <p><a href='/index'>検索に戻る</a></p>
             @else
+            <!--$profiles_uniqueに値が入っていた場合-->
                 <h1 class='center'>プロフィール一覧</h1>
                     <div class='row align-items-start'>
+                        
+                        <!--プロフィール情報をforeachで出力-->
                         @foreach($profiles_unique as $profile)
                         <div class='col-4 profile-index'>
                             <div class="profile">

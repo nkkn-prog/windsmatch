@@ -11,13 +11,18 @@
     <link href="{{ asset('css/windsmatch.css') }}" rel="stylesheet">
     <title>recommend.blade.php</title>
 </head>
-<body>
+<body>      
+            <!--$profiles_uniqueに値が入っていない場合-->
             @if($profiles_unique == null)
                 <h3>あなたにオススメできる方が見つかりませんでした</h3>
                 <p><a href='/index'>プロフィール一覧に戻る</a></p>
+                
+            <!--$profiles_uniqueに値が入っていた場合-->
             @else
                 <h1 class='center'>あなたにオススメな方</h1>
                     <div class='row align-items-start'>
+                        
+                        <!--プロフィール情報をforeachで出力-->
                         @foreach($profiles_unique as $profile)
                         <div class='col-4 profile-index'>
                             <div class="profile">

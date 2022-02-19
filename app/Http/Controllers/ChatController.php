@@ -18,7 +18,7 @@ use App\Events\MessageNotice;
 
 class ChatController extends Controller
 {   
-    
+    //チャット画面に遷移させるためのメソッド
     public function index(User $user, Message $message, Profile $profile){
         
         //ユーザーのIDを取得
@@ -41,6 +41,7 @@ class ChatController extends Controller
             ]);
     }
     
+    //チャット画面から送信したメッセージをデータベースに保存するメソッド
     public function store(MessageRequest $request, User $user, Message $message){
         
         //送られてきたメッセージを$requestで取得

@@ -21,6 +21,7 @@ use DB;
 
 class UserController extends Controller
 {   
+    //ユーザー全体のプロフィールを閲覧するページに遷移させるためのメソッド
     public function index(User $user, Profile $profile, Instrument $instrument, Genre $genre, Prefecture $prefecture)
     {   
         //ログインユーザーのIDを取得
@@ -37,6 +38,7 @@ class UserController extends Controller
         
     }
     
+    //ユーザーがプロフィール作成時に選択した楽器に紐づく既存ユーザーのプロフィールを表示させるメソッド
     public function recommend(Profile $profile, Instrument $instrument){
         
         //ログインユーザーのプロファイルから楽器IDを取得
@@ -84,6 +86,7 @@ class UserController extends Controller
         
     }
     
+    //ログインユーザー用のホーム画面へ遷移させるためのメソッド
     public function welcome()
     {   
         //ログインユーザーのIDを取得
@@ -98,6 +101,7 @@ class UserController extends Controller
         
     }
     
+    //プロフィール作成画面に遷移させるためのメソッド
     public function create(User $user, Profile $profile, Instrument $instrument, Genre $genre, Prefecture $prefecture,Image $image)
     {   
         //ログインユーザーのIDを取得
@@ -115,7 +119,7 @@ class UserController extends Controller
             ]);
     }
     
-     
+    //プロフィール作成後、データベースにデータを保存するメソッド
     public function store(ProfileRequest $request, Profile $profile, Image $image)
     {  
         
@@ -143,6 +147,7 @@ class UserController extends Controller
         return redirect('/recommend/'.$profile->id);
     }
     
+    //ログインユーザーを自身のプロフィール編集画面に遷移させるためのメソッド
     public function edit(Profile $profile, Instrument $instrument, Genre $genre, Prefecture $prefecture, Image $image)
     {   
         return view('profile/edit')->with([
@@ -154,6 +159,7 @@ class UserController extends Controller
             ]);
     }
     
+    //ログインユーザーが自身のプロフィールを編集して更新するためのメソッド
     public function update(Request $request, Profile $profile, Image $image)
     {   
         //s3へのファイルアップロード開始
@@ -181,6 +187,7 @@ class UserController extends Controller
         return redirect('/profile/' . $profile->id . '/show');
     }
     
+    //各ユーザーのプロフィール画面を表示させるメソッド
     public function show(User $user, Profile $profile, Instrument $instrument, Genre $genre, Image $image)
     {   
         $userId = Auth::id();
@@ -193,6 +200,7 @@ class UserController extends Controller
             ]);
     }
     
+    //選択した居住地と楽器を元に検索をかけて、該当するプロフィールを表示させるメソッド
     public function search(SearchRequest $request, Profile $profile, Instrument $instrument)
     {   
         //検索フォームから取得した居住地idを$prefectureIDに格納

@@ -13,6 +13,7 @@
     <title>index.blade.php</title>
 </head>
 <body>
+    <!--ここから検索機能-->
     <div class='profile-search-button'>
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
         プロフィール検索(ここを押すと開きます)</button>
@@ -21,6 +22,8 @@
             <div class="card card-body center">
                 <form action='/profile/search' method='POST'>
                     @csrf
+                    
+                    <!--検索したいユーザーの住んでいる都道府県を選択-->
                     <div class ='prefecture'>
                         <h3>住んでいる都道府県</h3>
                         <select name='profile[prefecture_id]'>
@@ -31,6 +34,8 @@
                         <p class="title__error" style="color:red">{{ $errors->first('profile.prefecture_id') }}</p>
                         </select>
                     </div></br>
+                    
+                    <!--検索したいユーザーが出来る楽器を選択-->
                     <div class ='instument'>
                         <h3>出来る楽器</h3>
                             @foreach($instruments as $instrument)
@@ -47,6 +52,7 @@
             </div>
         </div>
     
+    <!--ここからプロフィール表示機能-->
     <h1 class='center'>プロフィール一覧</h1>
     <div class='row align-items-start'>
     @foreach($profiles as $profile)

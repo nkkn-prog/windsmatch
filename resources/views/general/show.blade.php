@@ -16,9 +16,12 @@
     <div class='general-transition'>
         <p class='transition'><a href="/index" class="btn btn-border-2">プロフィール一覧</a></p>
         <p class='transition'><a href="/"class="btn btn-border-3">ホーム画面に戻る</a></p>
+        
+        <!--ログインユーザーのIDとプロフィールに紐づくuser_idが一致していた場合-->
         @if($userId == $profile->user_id)
         <p class='transition'><a href="/profile/{{$profile->id}}/edit" class='btn btn-border-4'>プロフィールを編集する</a></p>
         @else
+        <!--ログインユーザーのIDとプロフィールに紐づくuser_idが一致していなかった場合-->
         <p class='transition'><a href="/chat/{{$profile->user_id}}" class='btn btn-border-4'>{{$profile->nickname}}さんとチャットする</a></p>
         @endif
     </div>

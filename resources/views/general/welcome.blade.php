@@ -13,10 +13,12 @@
     <title>welcome.blade.php</title>
 </head>
 <body>
+    <!--プロフイールが作成されていない場合-->
     @if($profile == null)
     <h4 class='center'>あなたはプロフィールを作成していません！</h4>
     <h4 class='center'>プロフィール作成は<a href ='/profile/create'>こちらから</a></h4>
     @else
+    <!--プロフイールが作成されている場合-->
     <div class='welcome'>
         <h1><a href="/profile/{{$profile->id}}/show">{{Auth::user()->name}}さん</a>、WindsMatchへようこそ！</h1>
         <p class='transition'><a href="/profile/{{$profile->id}}/show" class="btn btn-border-1">自分のプロフィールを確認する</a></p>
